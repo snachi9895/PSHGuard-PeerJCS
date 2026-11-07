@@ -1,0 +1,75 @@
+{
+  "shape": [
+    2000,
+    2,
+    3,
+    10,
+    6
+  ],
+  "axes": [
+    "replicate",
+    "contrast",
+    "view",
+    "model",
+    "metric"
+  ],
+  "contrasts": [
+    "guo_vs_benign",
+    "datadog_vs_benign"
+  ],
+  "views": [
+    "raw_unweighted",
+    "retained_unweighted",
+    "retained_overlap_weighted"
+  ],
+  "models": [
+    [
+      "graph",
+      1001
+    ],
+    [
+      "graph",
+      1002
+    ],
+    [
+      "graph",
+      1003
+    ],
+    [
+      "modernbert",
+      1001
+    ],
+    [
+      "modernbert",
+      1002
+    ],
+    [
+      "modernbert",
+      1003
+    ],
+    [
+      "same_seed_pair",
+      1001
+    ],
+    [
+      "same_seed_pair",
+      1002
+    ],
+    [
+      "same_seed_pair",
+      1003
+    ],
+    [
+      "saved_fixed_LR",
+      null
+    ]
+  ],
+  "metrics": [
+    "auroc",
+    "average_precision",
+    "recall",
+    "fpr",
+    "precision",
+    "f1"
+  ]
+}

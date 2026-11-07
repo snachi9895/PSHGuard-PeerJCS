@@ -1,0 +1,153 @@
+{
+  "artifact": {
+    "name": "S10-B unified fail-closed exact-V2 one-shot final-test runner",
+    "version": "1.0.0",
+    "date": "2026-08-22",
+    "status": "frozen_before_test_authorization"
+  },
+  "scope": {
+    "s10b_cpu_preflight_only": true,
+    "test_authorized": false,
+    "test_manifest_path_constructed": false,
+    "test_rows_read": false,
+    "test_predictions_read": false,
+    "test_metrics_computed": false,
+    "gpu_compute": false
+  },
+  "locked_test_contract": {
+    "split_name": "exact_v2_strict40_test",
+    "expected_rows": 2128,
+    "expected_manifest_sha256": "4481e03bcb932698515466a556e3ff72f30aa94d6a6e6408668c296e0d6abb1b",
+    "manifest_path_deliberately_absent_until_authorization": true,
+    "one_authorized_evaluation_phase": true,
+    "no_refit_retraining_threshold_search_or_model_selection": true
+  },
+  "authorization_contract": {
+    "required_status": "AUTHORIZED_EXACT_V2_ONE_SHOT_TEST",
+    "required_version": "1.0.0",
+    "required_nonce_pattern": "^[a-f0-9]{64}$",
+    "required_explicit_user_authorization": true,
+    "required_inputs": [
+      "graph_manifest",
+      "modernbert_sequence_index",
+      "modernbert_package_input_index",
+      "ea4mp_grouped_inputs",
+      "ea4mp_package_input_index",
+      "ea4mp_input_summary",
+      "ea4mp_metadata_predictions",
+      "static_tool_task_index"
+    ],
+    "each_input_requires_absolute_path_and_sha256": true,
+    "run_without_authorization": "hard_fail_before_resolving_any_test_path"
+  },
+  "primary_system": {
+    "seeds": [1001, 1002, 1003],
+    "pairing": [
+      ["HGT1001", "ModernBERT1001"],
+      ["HGT1002", "ModernBERT1002"],
+      ["HGT1003", "ModernBERT1003"]
+    ],
+    "forbidden": [
+      "best seed selection",
+      "three by three cross-seed selection",
+      "six-model ensemble as primary result"
+    ],
+    "reporting": "mean plus sample standard deviation across the three same-seed systems"
+  },
+  "main_table": {
+    "rows_in_order": [
+      "Bandit4Mal",
+      "GuardDog",
+      "OSSGadget",
+      "VirusTotal (>=1 malicious engine)",
+      "Cerebro",
+      "EA4MP",
+      "Practical HGT (ours, graph branch)",
+      "ModernBERT (auxiliary sequence branch)",
+      "HGT plus ModernBERT (ours)"
+    ],
+    "metrics_in_order": ["AP", "AUROC", "Precision", "Recall", "F1", "FPR"],
+    "learned_method_reporting": "three frozen seeds, mean plus sample standard deviation",
+    "deterministic_tool_reporting": "one native-policy result; AP and AUROC are N/A for binary-only outputs"
+  },
+  "execution_stages": [
+    {"id": "00_authorization", "role": "validate one-shot authorization and exact population"},
+    {"id": "10_hgt", "role": "infer three frozen Practical HGT checkpoints"},
+    {"id": "20_modernbert", "role": "build one deterministic 512-token cache and infer three frozen ModernBERT checkpoints"},
+    {"id": "30_proposed_metrics", "role": "apply frozen branch calibrators and same-seed fusion fits"},
+    {"id": "40_ea4mp", "role": "infer three frozen EA4MP BERT/AdaBoost systems and apply frozen validation thresholds"},
+    {"id": "50_static_tools", "role": "SHA-join historical outputs, run unmatched exact-V2 packages once, apply frozen native rules"},
+    {"id": "60_archived_baselines", "role": "reuse frozen Cerebro and VirusTotal exact-V2 artifacts"},
+    {"id": "70_report", "role": "write the nine-row result table and machine-readable metrics"},
+    {"id": "80_seal", "role": "hash every output and seal the one-shot ledger"}
+  ],
+  "resume_contract": {
+    "stage_receipts_are_atomic": true,
+    "completed_stage_is_reused_only_after_input_and_output_hash_verification": true,
+    "corrupt_or_incompatible_receipt": "hard_fail_without_overwrite",
+    "interrupted_incomplete_temporary_files": "removed_then_stage_restarts",
+    "completed_predictions_are_never_recomputed_or_overwritten": true
+  },
+  "frozen_inputs": {
+    "s10a_readiness": "experiment_outputs/train_final_v10c_filtered700k_20260612/s10a_final_test_readiness_20260822_v1/s10a_final_test_readiness_audit.json",
+    "s10a_corrigendum": "scripts/formal_training_v10c_20260612/s10a_main_table_corrigendum_v1_1.json",
+    "s10a_matrix": "experiment_outputs/train_final_v10c_filtered700k_20260612/s10a_final_test_readiness_20260822_v1/s10a_final_paper_matrix_v1_1.csv",
+    "branch_fits": "experiment_outputs/train_final_v10c_filtered700k_20260612/s10a_final_test_readiness_20260822_v1/s10a_single_branch_deployment_fits.json",
+    "fusion_fits": "experiment_outputs/train_final_v10c_filtered700k_20260612/s9a_final_model_experiment_freeze_20260818_v1/s9a_same_seed_deployment_fits.json",
+    "ea4mp_thresholds": "experiment_outputs/train_final_v10c_filtered700k_20260612/s9d2_ea4mp_full_adaboost_operating_point_validation_20260820_v1/s9d2_ea4mp_full_adaboost_deployment_thresholds.json",
+    "static_policy_audit": "experiment_outputs/train_final_v10c_filtered700k_20260612/s9d1_static_tool_policy_reuse_audit_20260820_v1/s9d1_static_tool_policy_reuse_audit.json",
+    "cerebro_integrity": "experiment_outputs/train_final_v10c_filtered700k_20260612/p10e_cerebro_uniform_operating_point_sensitivity_20260815_v1/p10e_result_integrity_audit.json",
+    "cerebro_predictions": "experiment_outputs/train_final_v10c_filtered700k_20260612/p10e_cerebro_uniform_operating_point_sensitivity_20260815_v1/p10e_cerebro_test_sensitivity_predictions.csv",
+    "virustotal_metrics": "baselines/virustotal/results/v2_strict40_20260722/vt_upload_metrics.csv",
+    "virustotal_status": "baselines/virustotal/results/v2_strict40_20260722/vt_upload_metrics_status_counts.json"
+  },
+  "model_inputs": {
+    "hgt": {
+      "seeds": [1001, 1002, 1003],
+      "checkpoints": [
+        "experiment_outputs/train_final_v10c_filtered700k_20260612/p3_rcber_batchsafe_paired_validation_20260807_v2/runs/v10c_formal_v2_strict40_ast_event_param_context_type_balanced_ckpt_ap_inverse_sqrt_p3_batchsafe_practical_v2_seed1001/checkpoints/best_model.pt",
+        "experiment_outputs/train_final_v10c_filtered700k_20260612/p3_rcber_batchsafe_paired_validation_20260807_v2/runs/v10c_formal_v2_strict40_ast_event_param_context_type_balanced_ckpt_ap_inverse_sqrt_p3_batchsafe_practical_v2_seed1002/checkpoints/best_model.pt",
+        "experiment_outputs/train_final_v10c_filtered700k_20260612/p3_rcber_batchsafe_paired_validation_20260807_v2/runs/v10c_formal_v2_strict40_ast_event_param_context_type_balanced_ckpt_ap_inverse_sqrt_p3_batchsafe_practical_v2_seed1003/checkpoints/best_model.pt"
+      ]
+    },
+    "modernbert": {
+      "seeds": [1001, 1002, 1003],
+      "local_snapshot": "baselines/modernbert/artifacts/models/answerdotai_ModernBERT-base_8949b909",
+      "checkpoints": [
+        "experiment_outputs/train_final_v10c_filtered700k_20260612/s1_base_modernbert_seed1001_validation_20260815_v1/best_validation_model.pt",
+        "experiment_outputs/train_final_v10c_filtered700k_20260612/s1_base_modernbert_confirmatory_seeds1002_1003_validation_20260816_v1/seed1002/best_validation_model.pt",
+        "experiment_outputs/train_final_v10c_filtered700k_20260612/s1_base_modernbert_confirmatory_seeds1002_1003_validation_20260816_v1/seed1003/best_validation_model.pt"
+      ],
+      "maximum_tokens": 512
+    },
+    "ea4mp": {
+      "seeds": [42, 43, 44],
+      "bert_models": [
+        "baselines/ea4mp/artifacts/bert_training/v3_v2_strict40_leakage_safe/public_code_head512/final_model",
+        "experiment_outputs/train_final_v10c_filtered700k_20260612/s9d_ea4mp_confirmatory_seeds43_44_validation_20260820_v1/seed43/bert_training/final_model",
+        "experiment_outputs/train_final_v10c_filtered700k_20260612/s9d_ea4mp_confirmatory_seeds43_44_validation_20260820_v1/seed44/bert_training/final_model"
+      ],
+      "adaboost_models": [
+        "baselines/ea4mp/artifacts/ensemble_models/v1_v2_strict40/public_code_adaboost_validation/adaboost_ensemble_model.pkl",
+        "experiment_outputs/train_final_v10c_filtered700k_20260612/s9d_ea4mp_confirmatory_seeds43_44_validation_20260820_v1/seed43/ensemble_model/adaboost_ensemble_model.pkl",
+        "experiment_outputs/train_final_v10c_filtered700k_20260612/s9d_ea4mp_confirmatory_seeds43_44_validation_20260820_v1/seed44/ensemble_model/adaboost_ensemble_model.pkl"
+      ]
+    }
+  },
+  "static_tools": {
+    "Bandit4Mal": {"policy": "B800-B899 custom rule present", "unresolved_policy": "benign"},
+    "GuardDog": {"policy": "any native issue present", "unresolved_policy": "benign"},
+    "OSSGadget": {"policy": "any emitted rule ID present", "unresolved_policy": "benign"},
+    "historical_join_key": ["sample_id", "archive_sha256"],
+    "only_unmatched_rows_may_be_inferred": true
+  },
+  "preflight_gates": [
+    "all frozen development files exist and match the freeze manifest",
+    "all checkpoints and deployment fits exist and hash successfully",
+    "canonical nine-row order is exact",
+    "runner refuses --run without authorization before resolving a test path",
+    "synthetic authorization, stage receipt, interruption, resume, corruption, calibration, fusion, and metric tests pass",
+    "source scan contains no literal exact-V2 test manifest path",
+    "preflight records test path constructed=false, test read=false, test metrics=false, GPU=false"
+  ]
+}
