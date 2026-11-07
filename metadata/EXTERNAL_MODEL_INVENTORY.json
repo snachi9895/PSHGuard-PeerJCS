@@ -1,5 +1,5 @@
 {
-  "status": "Access/archival plan pending; weights not bundled",
+  "status": "Local existence/size checked; access plan in MODEL_ACCESS_PLAN.csv; weights not bundled or publicly archived",
   "hash_scope": "Archived expected hashes retained; only existence/size checked in this packaging task",
   "models": [
     {

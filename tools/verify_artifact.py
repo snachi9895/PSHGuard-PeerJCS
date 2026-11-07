@@ -5,6 +5,7 @@ from collections import Counter, defaultdict
 import csv
 import hashlib
 import json
+from urllib.parse import quote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -29,6 +30,7 @@ def main():
               and p.relative_to(ROOT).as_posix() != 'metadata/FILE_SHA256.csv'}
     assert actual == names, (actual-names, names-actual)
     split = Counter()
+    manifest_by_id = {}
     seen = set()
     components = defaultdict(set)
     sizes = Counter()
@@ -36,6 +38,7 @@ def main():
         for r in read_rows(p):
             assert r['sample_id'] and r['sample_id'] not in seen
             seen.add(r['sample_id'])
+            manifest_by_id[r['sample_id']] = r
             split[r['split']] += 1
             components[r['source_clone_component_id']].add(r['split'])
             sizes[r['source_clone_component_id']] += 1
@@ -58,6 +61,34 @@ def main():
     t3 = read_rows(ROOT/'results/current/table_03_auroc_and_fpr.csv')
     dd = [r for r in t3 if r['contrast']=='datadog_vs_benign' and r['view']=='retained_overlap_weighted']
     assert len(dd)==5 and all(r['ci95_lower']=='' and r['ci95_upper']=='' for r in dd)
+    access = read_rows(ROOT / 'data/access/ORIGINAL_PACKAGE_ACCESS.csv')
+    assert len(access) == len(manifest_by_id) == 20878
+    assert {r['sample_id'] for r in access} == set(manifest_by_id)
+    for r in access:
+        original = manifest_by_id[r['sample_id']]
+        for key in ('package_name', 'version', 'label_int', 'split', 'archive_sha256'):
+            assert r[key] == original[key], (r['sample_id'], key)
+        assert r['manifest_source_group'] == original['source_group']
+        assert len(r['archive_sha256']) == 64
+        assert int(r['archive_size_bytes']) > 0
+        parsed = urlsplit(r['source_url'])
+        assert parsed.scheme == 'https'
+        if parsed.netloc == 'github.com':
+            expected = r['source_repository'].rstrip('/') + '/blob/' + r['source_revision'] + '/' + quote(r['source_relative_path'], safe='/')
+            assert r['source_path_tracked_at_revision'].lower() == 'true'
+        else:
+            assert parsed.netloc == 'pypi.org'
+            expected = 'https://pypi.org/pypi/' + quote(r['package_name'], safe='') + '/' + quote(r['version'], safe='') + '/json'
+        assert r['source_url'] == expected, (r['sample_id'], 'access reference')
+    models = read_rows(ROOT / 'metadata/MODEL_ACCESS_PLAN.csv')
+    assert len(models) == 11
+    assert {(r['role'], r['seed']) for r in models if r['role'].startswith('pshguard_')} == {(role, str(seed)) for role in ('pshguard_hgt', 'pshguard_modernbert_finetuned') for seed in (1001, 1002, 1003)}
+    licence = json.loads((ROOT / 'metadata/LICENSE_STATUS.json').read_text(encoding='utf-8'))
+    assert licence['software_licence'] == 'MIT' and licence['main_code_rights_confirmed']
+    assert not licence['data_and_weights_licence_assigned_by_this_update']
+    assert (ROOT / 'LICENSE').read_text(encoding='utf-8').startswith('MIT License\n')
+    print(f'PASS: {len(access)} original-archive access identities; no URL requests')
+    print('PASS: MIT scope metadata and 11 model/config access-plan records')
     print(f'PASS: {len(files)} checksummed files; complete distribution inventory verified')
     print(f'PASS: {len(seen)} unique samples; splits={dict(split)}; {len(components)} isolated components')
     print('PASS: current table/figure identities, four budgets, and saved missing/uncertainty states')

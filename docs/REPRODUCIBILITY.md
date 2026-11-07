@@ -10,6 +10,10 @@ This task copied saved results and checked identities only. It did not rerun the
 
 figure_source/v3/generate_figures.py is copied without modification. It reads its adjacent data/ files and generates Figures 3-7. The original implementation uses Arial from a Windows font installation, matplotlib and numpy. No font files are redistributed, and no figure was regenerated in this packaging task.
 
+## Original inputs and model access
+
+data/access/ORIGINAL_PACKAGE_ACCESS.csv maps all frozen sample identities to original-archive access references; docs/RAW_DATA_ACCESS.md explains the fields and local-only checks. metadata/MODEL_ACCESS_PLAN.csv identifies the six research checkpoints and the pinned base-model/config dependencies. These are access records and a pending attachment plan; raw archives, weights and representation caches are not bundled here. No live archive retrieval or end-to-end run is claimed.
+
 ## Remaining reconstruction work
 
 The archived entry points below retain the historical workspace layout and are not a single ready-to-run installation command. Original package archives, graph/token caches and model weights remain external. Dependency details are in docs/RECORDED_ENVIRONMENTS.md; the broad requirements file is not a newly tested exact lockfile. See docs/RELEASE_READINESS.md before describing the draft as a complete end-to-end reproduction package.

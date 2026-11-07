@@ -5,7 +5,7 @@ The scientific results reuse the frozen PSHGuard experiments. The figure numberi
 | Paper item | Files | Identity |
 | --- | --- | --- |
 | Figure 1, framework | Method implementation in scripts/; no numerical figure-source table | Author-prepared system illustration. |
-| Figure 2, static cases | Original package identity/source metadata in data/manifests/; original package access remains external | Author-prepared static examples, no package execution. Artwork and raw sample source are not bundled here. |
+| Figure 2, static cases | Original package identity metadata in data/manifests/ and access references in data/access/; original archives remain external | Author-prepared static examples, no package execution. Artwork and raw sample source are not bundled here. |
 | Figure 3, branch comparison | figure_source/v3/data/branch_comparison.csv; data/predictions/final_test/; data/statistics/final_test/ | Absolute F1 and matched paired seed/component intervals. |
 | Figure 4, ablation and file budgets | figure_source/v3/data/single_hgt.csv, fusion_reference.json, fusion_ablation_ci.csv, dual_branch_budgets.csv; results/graph_representation/; data/predictions/file_budget/ | Single HGT and same-seed fusion are different objects. SD and CI are kept separate. |
 | Figure 5, prepared-input efficiency | figure_source/v3/data/efficiency.csv; saved S9-E1 results in results/historical_20260911/ | Prepared-input branch measurements; serial fusion timing is an estimate. |

@@ -1,13 +1,11 @@
 # Rights and attribution
 
-No blanket software licence has been selected for this local preparation snapshot. Do not describe it as MIT-, Apache-, CC-licensed, or as an unrestricted open-source release. A licence choice can be recorded by the authors separately before a public release.
+The authors have selected the MIT License for author-owned PSHGuard software and associated documentation and confirmed authority to license the main code. The root LICENSE contains the standard terms; docs/LICENSE_SCOPE.md defines coverage.
 
-No new licence or redistribution permission is granted for third-party datasets, package contents, model weights, libraries, or external baseline implementations. Those inputs remain subject to their upstream terms and are not bundled here. Existing source headers and provenance are preserved.
+Third-party datasets, original package contents, model weights, dependency libraries and external implementations keep their own terms. This software licence does not assign a new data/model licence or grant redistribution rights for those inputs. Exact source references and retained notices are in docs/THIRD_PARTY_NOTICES.md and third_party/.
 
-The `baselines/ea4mp/src/ea4mp_repro/` files are retained because the PSHGuard sequence pipeline imports the behavior canonicalization implementation. Their directory name records that dependency's provenance; it does not mean that a complete EA4MP baseline repository is bundled.
+The baselines/ea4mp/src/ea4mp_repro/ module is retained because the sequence pipeline imports its local behavior canonicalization implementation. Its provenance and independent-reproduction context remain documented. The full upstream EA4MP repository is not bundled.
 
-Suggested attribution identifies the manuscript title and authors in `metadata/MANUSCRIPT_IDENTITY.json`. No DOI, accession number, or accepted-publication citation is assigned in this snapshot.
+Please cite the research when using the method or results. The manuscript title and author order are in metadata/MANUSCRIPT_IDENTITY.json. Citation is a scholarly request, separate from the MIT licence conditions; no accepted-publication citation or DOI is assigned.
 
-## PeerJ preparation status
-
-This derivative is a separate PeerJ-specific preparation package. Existing notices and provenance are retained. No additional blanket licence, third-party data licence, DOI or journal acceptance is assigned by preparing it. Confirm the release scope before changing visibility or archiving it.
+This is still a private PeerJ preparation package. Software-licence selection does not change repository visibility, establish complete end-to-end reproducibility or assign an archival DOI. See docs/RELEASE_READINESS.md.
