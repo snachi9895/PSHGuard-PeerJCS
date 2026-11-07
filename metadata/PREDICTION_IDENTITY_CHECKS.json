@@ -1,0 +1,95 @@
+{
+  "mode": "identity/count checks only; no metric recomputation",
+  "files": [
+    {
+      "file": "data/predictions/file_budget/budget16_oof_predictions.csv",
+      "rows": 2137,
+      "split": "val"
+    },
+    {
+      "file": "data/predictions/file_budget/budget32_oof_predictions.csv",
+      "rows": 2137,
+      "split": "val"
+    },
+    {
+      "file": "data/predictions/file_budget/budget4_oof_predictions.csv",
+      "rows": 2137,
+      "split": "val"
+    },
+    {
+      "file": "data/predictions/file_budget/budget8_oof_predictions.csv",
+      "rows": 2137,
+      "split": "val"
+    },
+    {
+      "file": "data/predictions/final_test/ea4mp_seed42_test_predictions.csv",
+      "rows": 2128,
+      "split": "test"
+    },
+    {
+      "file": "data/predictions/final_test/ea4mp_seed43_test_predictions.csv",
+      "rows": 2128,
+      "split": "test"
+    },
+    {
+      "file": "data/predictions/final_test/ea4mp_seed44_test_predictions.csv",
+      "rows": 2128,
+      "split": "test"
+    },
+    {
+      "file": "data/predictions/final_test/fusion_seed1001_test_predictions.csv",
+      "rows": 2128,
+      "split": "test"
+    },
+    {
+      "file": "data/predictions/final_test/fusion_seed1002_test_predictions.csv",
+      "rows": 2128,
+      "split": "test"
+    },
+    {
+      "file": "data/predictions/final_test/fusion_seed1003_test_predictions.csv",
+      "rows": 2128,
+      "split": "test"
+    },
+    {
+      "file": "data/predictions/final_test/graph_seed1001_test_predictions.csv",
+      "rows": 2128,
+      "split": "test"
+    },
+    {
+      "file": "data/predictions/final_test/graph_seed1002_test_predictions.csv",
+      "rows": 2128,
+      "split": "test"
+    },
+    {
+      "file": "data/predictions/final_test/graph_seed1003_test_predictions.csv",
+      "rows": 2128,
+      "split": "test"
+    },
+    {
+      "file": "data/predictions/final_test/modernbert_seed1001_test_predictions.csv",
+      "rows": 2128,
+      "split": "test"
+    },
+    {
+      "file": "data/predictions/final_test/modernbert_seed1002_test_predictions.csv",
+      "rows": 2128,
+      "split": "test"
+    },
+    {
+      "file": "data/predictions/final_test/modernbert_seed1003_test_predictions.csv",
+      "rows": 2128,
+      "split": "test"
+    },
+    {
+      "file": "data/predictions/validation/same_seed_oof_predictions.csv",
+      "rows": 2137,
+      "split": "val"
+    },
+    {
+      "file": "data/predictions/validation/source_size_joined.csv",
+      "rows": 2137,
+      "split": "val"
+    }
+  ]
+}

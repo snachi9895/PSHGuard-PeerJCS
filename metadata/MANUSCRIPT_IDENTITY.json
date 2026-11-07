@@ -1,0 +1,32 @@
+{
+  "title": "PSHGuard: Detecting Malicious PyPI Packages With Complementary Behavioral Views",
+  "authors": [
+    "Junwei Zhao",
+    "Mengtian Cui",
+    "Mengmeng Tao",
+    "Zhibo Lu",
+    "Suonan Xiao"
+  ],
+  "target": "PeerJ Computer Science",
+  "artifact_status": "private preparation draft v1; no journal submission, public release, or DOI claimed",
+  "date": "2026-11-07",
+  "repository": "https://github.com/snachi9895/PSHGuard-PeerJCS",
+  "visibility_observed": "Private in author-supplied screenshot",
+  "initial_commit_short_observed": "2e42e02",
+  "scientific_contract": {
+    "paired_seeds": [
+      1001,
+      1002,
+      1003
+    ],
+    "train": 16613,
+    "validation": 2137,
+    "final_test": 2128,
+    "total": 20878,
+    "figures": 7,
+    "tables": 3
+  },
+  "english_v4_sha256": "598a8dd661f44b6659cff1ecab96b814ce39f834cb2e8ec763210bb1cf93b404",
+  "chinese_v5_sha256": "076049732712258044730e0bdd3e535e1e48e5564e119e0916575d166dcbff1a",
+  "english_synchronization_pending": true
+}

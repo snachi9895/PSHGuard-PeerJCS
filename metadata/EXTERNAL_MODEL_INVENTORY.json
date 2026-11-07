@@ -1,0 +1,55 @@
+{
+  "status": "Access/archival plan pending; weights not bundled",
+  "hash_scope": "Archived expected hashes retained; only existence/size checked in this packaging task",
+  "models": [
+    {
+      "original_workspace_relative_path": "experiment_outputs/train_final_v10c_filtered700k_20260612/p3_rcber_batchsafe_paired_validation_20260807_v2/runs/v10c_formal_v2_strict40_ast_event_param_context_type_balanced_ckpt_ap_inverse_sqrt_p3_batchsafe_practical_v2_seed1001/checkpoints/best_model.pt",
+      "expected_frozen_sha256": "190e9fb2020ee0975104b855f7cd17a594f10869bd1b0a128283d9229087b330",
+      "present": true,
+      "bytes": 1149269,
+      "included_in_this_draft": false
+    },
+    {
+      "original_workspace_relative_path": "experiment_outputs/train_final_v10c_filtered700k_20260612/p3_rcber_batchsafe_paired_validation_20260807_v2/runs/v10c_formal_v2_strict40_ast_event_param_context_type_balanced_ckpt_ap_inverse_sqrt_p3_batchsafe_practical_v2_seed1002/checkpoints/best_model.pt",
+      "expected_frozen_sha256": "1e90b167ed7d8d173c301aac201e615c2baeb1d841452b7382a6462eaa1761b2",
+      "present": true,
+      "bytes": 1149269,
+      "included_in_this_draft": false
+    },
+    {
+      "original_workspace_relative_path": "experiment_outputs/train_final_v10c_filtered700k_20260612/p3_rcber_batchsafe_paired_validation_20260807_v2/runs/v10c_formal_v2_strict40_ast_event_param_context_type_balanced_ckpt_ap_inverse_sqrt_p3_batchsafe_practical_v2_seed1003/checkpoints/best_model.pt",
+      "expected_frozen_sha256": "cd12c178c49544583631775f218bd8dae81d7eff8060a44f46b2500014047d4f",
+      "present": true,
+      "bytes": 1149269,
+      "included_in_this_draft": false
+    },
+    {
+      "original_workspace_relative_path": "baselines/modernbert/artifacts/models/answerdotai_ModernBERT-base_8949b909/model.safetensors",
+      "expected_frozen_sha256": "340ac08b74eef0d7bdec2d7981a6a3d4249bf0e6aab60634b72ad02c2b8023a9",
+      "present": true,
+      "bytes": 598635032,
+      "included_in_this_draft": false
+    },
+    {
+      "original_workspace_relative_path": "experiment_outputs/train_final_v10c_filtered700k_20260612/s1_base_modernbert_seed1001_validation_20260815_v1/best_validation_model.pt",
+      "expected_frozen_sha256": "688414f9abd8b418dbeb893e28664c535722088d010ff6cc500ccddb8b9c5748",
+      "present": true,
+      "bytes": 598487547,
+      "included_in_this_draft": false
+    },
+    {
+      "original_workspace_relative_path": "experiment_outputs/train_final_v10c_filtered700k_20260612/s1_base_modernbert_confirmatory_seeds1002_1003_validation_20260816_v1/seed1002/best_validation_model.pt",
+      "expected_frozen_sha256": "8464a90f885356d6de3a3ca57fc48ce6faef92358dd6c390ade0817b795a41f5",
+      "present": true,
+      "bytes": 598487691,
+      "included_in_this_draft": false
+    },
+    {
+      "original_workspace_relative_path": "experiment_outputs/train_final_v10c_filtered700k_20260612/s1_base_modernbert_confirmatory_seeds1002_1003_validation_20260816_v1/seed1003/best_validation_model.pt",
+      "expected_frozen_sha256": "850f23ac52c761b40e02e327f5d0310d312f3a18bb23ad0c1479a5eaeb2662f3",
+      "present": true,
+      "bytes": 598487691,
+      "included_in_this_draft": false
+    }
+  ]
+}
