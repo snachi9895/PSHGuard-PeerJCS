@@ -1,0 +1,61 @@
+{
+  "artifact": {
+    "name": "P3-v2 batch-safe paired implementation and protocol freeze manifest",
+    "version": "2.0.0",
+    "frozen_date": "2026-08-07",
+    "status": "frozen_after_v1_pre_epoch_collation_abort_before_v2_training_or_predictions"
+  },
+  "boundary": {
+    "v1_completed_epochs": 0,
+    "v1_candidate_validation_predictions": 0,
+    "v1_scientific_result": false,
+    "v2_model_arms": ["practical", "rcber"],
+    "v2_seeds": [1001, 1002, 1003],
+    "v2_paired_runs": 6,
+    "input": "existing practical V10c train and validation PT only",
+    "batching_repair": "schema-complete empty edge stores before PyG collation",
+    "graph_rebuild": false,
+    "pt_rewrite": false,
+    "gpu_epochs_before_freeze": 0,
+    "v2_validation_predictions_before_freeze": 0,
+    "test_access": false,
+    "test_unlocked": false
+  },
+  "files_sha256": {
+    "scripts/formal_training_v10c_20260612/p3_schema_complete_batching.py": "d8177f7733da99e2b29c80ec71f04f2e406d2d9e5b328f58cfd9e554bba13fca",
+    "scripts/formal_training_v10c_20260612/train_p3_rcber_paired_hgt_v2.py": "3a2facc9f2dde78037433472d23bcb1b8733206bc33880a97a13cfabd8e25c1a",
+    "scripts/formal_training_v10c_20260612/audit_p3_batch_collation_repair_v2.py": "8d64365cf8296b8c4aa7947307b01230b929afa845d5aacaa684ff0b18f6141e",
+    "scripts/formal_training_v10c_20260612/audit_p3_rcber_preflight_v2.py": "638aa2e74b6b395e7949dd1ef19acc5fbbcc50a7019c3eac98b615c313482e60",
+    "scripts/formal_training_v10c_20260612/audit_p3_rcber_primary_results_v2.py": "dbb370e03c3cb871a2c0bab8bfb9f50a13e413b56b14d6d1c0a6847d3e1fcf3d",
+    "scripts/formal_training_v10c_20260612/run_p3_rcber_primary_matrix_v2.py": "c16c1f07bee5b93921ce646a93b7d017290f31a0963d563d877eb4b98ec92fce",
+    "scripts/formal_training_v10c_20260612/run_p3_rcber_primary_matrix_v2.sh": "e7679ac5c25f8f03bd8d7966f3c63c8e88d6383aac91466fddd406c3b242890f",
+    "scripts/formal_training_v10c_20260612/p3_rcber_primary_spec_v2.json": "b573cfc2a44886ac8745749a5ad56957de8b3894aeedef4ea5d396960297ead7",
+    "research_state/P3_BATCH_COLLATION_INCIDENT_AND_V2_PROTOCOL_20260807.md": "ae18abe7fbfae9effe12b7ef3c8e7f7abb652c8d6a3d2668f341ef23f081a5b7",
+    "scripts/formal_training_v10c_20260612/p3_rcber_model.py": "88f7bfaf64d126f2c9889e24ea6c9bdb22948e2a5f68a4c8efe8e744601f8ab1",
+    "scripts/formal_training_v10c_20260612/train_v10c_formal_hgt.py": "28eb9beab07ef941444c6f53f11ec6019c55d351375f2936b843954ff786632c",
+    "scripts/final_graph_v9_20260608/train_v9_small_hgt_readout.py": "ffb646d26a6fe19eaa86464c44825e0e6ca8f1fd712d5866eacafea1bff5c844",
+    "scripts/formal_training_v10c_20260612/train_p2a3_paired_hgt.py": "5b90abbe164376b31971ce701704c5919ccab05897b54600e4579c3af0e4fe50",
+    "scripts/formal_training_v10c_20260612/p2a3_primary_freeze_manifest_v1.json": "cd4300425c9620c9aa14310fc6b02f5354cfd8469bb45f5a2a76f9dabd866690",
+    "experiment_outputs/train_final_v10c_filtered700k_20260612/p2a3_primary_paired_validation_20260806_v1/p2a3_primary_gate_audit.json": "dd19cff58cd8d7270936d8688461a40c018ebd5fd4f22205fada5a67a023798d",
+    "scripts/formal_training_v10c_20260612/audit_p2a3_primary_results.py": "a9a44d7eb357a971847e4b9453adc05563781326cdfd2c36db9053f9a8245cb8",
+    "scripts/formal_training_v10c_20260612/audit_p3_rcber_primary_results.py": "7be87bc79ba3410969b279de03824e147a9af6c4cfd252ccb9e939422d775f74",
+    "scripts/formal_training_v10c_20260612/p3_entry_relation_evidence_freeze_v1.json": "fb673dc736fbd0c6695edff31837829a806c8402b86148047fd17327e8fc6a88",
+    "experiment_outputs/train_final_v10c_filtered700k_20260612/p3_entry_relation_evidence_audit_20260807_v1/p3_entry_relation_evidence_summary.json": "454ab3d9ec2a84d7319f3e386c3ec504eefb8c843f727686c7c08891fa6f9208",
+    "scripts/formal_training_v10c_20260612/p3_rcber_primary_spec_v1.json": "61a8adb12adc5626118de4dc783e07293bb2433c9d26f6e08b1a8970d2fcbe7e",
+    "scripts/formal_training_v10c_20260612/p3_rcber_freeze_manifest_v1.json": "7fd71ca7fcf2164b2d4d8a24264b25804f291a31672f7d9bda2df08b3ad922c2",
+    "experiment_outputs/train_final_v10c_filtered700k_20260612/p3_rcber_primary_validation_20260807_v1/p3_rcber_primary_matrix.run.log": "664b6759804931c8aa1b05f7e9cfc05dec22f0b189646f5856df8a6fe8493cdb"
+  },
+  "execution_gate": {
+    "required_before_gpu": [
+      "full development collation audit reproduces the incident and proves zero post-repair round-trip/ownership mismatch",
+      "CPU preflight proves shared initialization, parameter budget, gap-batch forward/backward, formal two-worker loader, configuration binding, and checkpoint resume"
+    ],
+    "authorized_after_pass": "user-started six-run repaired practical-vs-RCBER validation-only paired matrix",
+    "not_authorized_after_pass": [
+      "test access",
+      "graph rebuild or PT rewrite",
+      "additional architecture candidates",
+      "post-hoc hyperparameter or seed changes"
+    ]
+  }
+}

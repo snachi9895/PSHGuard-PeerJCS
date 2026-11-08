@@ -1,0 +1,1 @@
+Zhao, J., Cui, M., Tao, M., Lu, Z., and Xiao, S. (2026). PSHGuard: frozen model checkpoints and configurations (Version 1.0.0) [Model]. Zenodo. https://doi.org/10.5281/zenodo.24038283

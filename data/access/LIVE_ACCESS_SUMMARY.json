@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-07",
+  "total_records": 20878,
+  "original_identity_fields_unchanged": true,
+  "all_local_original_archive_sha256_and_sizes_match": true,
+  "original_archive_bytes_checked": 12226308159,
+  "access_check_counts": {
+    "pypi_json_sha256_and_cdn_head": 10613,
+    "pypi_cdn_streamed_sha256": 30,
+    "remote_git_tree_and_local_blob_hash": 10235
+  },
+  "pypi_primary_exceptions": {
+    "metadata_http_404": 26,
+    "old_digest_absent_from_release_metadata": 1,
+    "network_or_parse_errors": 3,
+    "all_resolved_by_fixed_cdn_archive_sha256": true
+  },
+  "malicious_sources": {
+    "fixed_commits_fetched_as_blob_filtered_git_metadata": true,
+    "remote_trees_equal_frozen_trees": true,
+    "local_archive_git_blob_sha1_matches_remote_tree": 10235,
+    "raw_http_downloads_for_malicious_archives": false
+  },
+  "limits": [
+    "PyPI primary checks match advertised digest/size and HTTP HEAD content length, without redownloading all 11.10 GB of benign archives.",
+    "Only the 30 exception archives were streamed again for full remote SHA256; no contents extracted or executed.",
+    "Malicious raw HTTP references are constructed from verified fixed Git trees; each raw URL was not individually downloaded. Exact local archive bytes match the remote Git blob identity.",
+    "An access/provenance index does not grant new redistribution rights to third-party archive contents."
+  ]
+}

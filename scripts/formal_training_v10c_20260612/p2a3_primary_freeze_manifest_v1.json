@@ -1,0 +1,55 @@
+{
+  "artifact": {
+    "name": "P2-A3a primary paired validation-only implementation freeze",
+    "version": "1.0.0",
+    "frozen_date": "2026-08-06",
+    "status": "frozen_before_p2a3_validation_predictions_or_training"
+  },
+  "files_sha256": {
+    "scripts/formal_training_v10c_20260612/p2a3_primary_training_spec_v1.json": "efaa4f747c970817c9da279924659527e6c236686e69ec7880af32fa74df49e0",
+    "scripts/formal_training_v10c_20260612/train_p2a3_paired_hgt.py": "5b90abbe164376b31971ce701704c5919ccab05897b54600e4579c3af0e4fe50",
+    "scripts/formal_training_v10c_20260612/audit_p2a3_preflight.py": "7750c7da852c46c106361a5618887c8c5e27239efa003f3b594fa3ef2336d265",
+    "scripts/formal_training_v10c_20260612/audit_p2a3_primary_results.py": "a9a44d7eb357a971847e4b9453adc05563781326cdfd2c36db9053f9a8245cb8",
+    "scripts/formal_training_v10c_20260612/run_p2a3_primary_matrix.py": "568f3adf9e19d26b80de391c9c186786f7922fde077aecfcba4d81a2b61f95c9",
+    "scripts/formal_training_v10c_20260612/run_p2a3_primary_matrix.sh": "92643c26376d3717a6543cf44b68634b8c7b13f889d7ec6b54cda85271919841",
+    "scripts/formal_training_v10c_20260612/p2_behavior_first_protocol_v1.json": "407d5dca91fea3775cb4aecb7fb1e9568c30e81c6b5b66e5d7b76ac58813b023",
+    "scripts/formal_training_v10c_20260612/p2_behavior_encoder_spec_v1.json": "8b8c33f50732af11d3caa904fd5b71a88fa761e1b737efa5415f830e3c32aa35",
+    "scripts/formal_training_v10c_20260612/p2_behavior_encoder_v1.py": "88496710e025262a9bc8035135886099358ce91c8cce2ebda0f8422cd754d382",
+    "scripts/formal_training_v10c_20260612/p2a2_full_dev_pt_spec_v1.json": "47a6c0c601167db0842842505a33745bbd34a6a9381c8055916c6e703ac3bfba",
+    "scripts/formal_training_v10c_20260612/train_v10c_formal_hgt.py": "28eb9beab07ef941444c6f53f11ec6019c55d351375f2936b843954ff786632c",
+    "scripts/final_graph_v9_20260608/train_v9_small_hgt_readout.py": "ffb646d26a6fe19eaa86464c44825e0e6ca8f1fd712d5866eacafea1bff5c844",
+    "manifests/final_source_clone_aware_split_202606/final_filtered700k_graph_eligible_v2_strict40_20260722/filtered700k_graph_eligible_v2_train.csv": "8635d5e35c28ab750d57b3cc9eedbbc390b6f5f024ba269a94e23856faf0d882",
+    "manifests/final_source_clone_aware_split_202606/final_filtered700k_graph_eligible_v2_strict40_20260722/filtered700k_graph_eligible_v2_val.csv": "80dfd90b01d0e19f04fdde640a87b472c9491b3f31c677ad336dc3bc18583d18",
+    "experiment_outputs/train_final_v10c_filtered700k_20260612/p2a2_full_dev_pt_conversion_20260806_v1/p2a2_full_summary.json": "33316ff8bd181125bd6b71116a968f94caa1654133160bb2276df654d307cd6f",
+    "experiment_outputs/train_final_v10c_filtered700k_20260612/p2a2_full_dev_pt_conversion_20260806_v1/p2a2_full_freeze_manifest.json": "762b97007cde1d386946a8646c4f50aa4cfcb727a44abd9eda769d7072cc6c9f",
+    "experiment_outputs/train_final_v10c_filtered700k_20260612/p2a2_full_dev_pt_conversion_20260806_v1/artifact_inventory.json": "2df4ff81353f28b571090586f36d1e9e7373a168f0b43696834a6aa909251de1",
+    "experiment_outputs/train_final_v10c_filtered700k_20260612/p2a2_full_dev_pt_conversion_20260806_v1/full_conversion_manifest.csv": "627703c696155a6221a2d0baa5fec18ed53af6a44be15ff21b42f1ba930f325b",
+    "experiment_outputs/train_final_v10c_filtered700k_20260612/p2a2_full_dev_pt_conversion_20260806_v1/full_equivalence_audit.csv": "d959e6fce96fa44dee17a93ee91270349d478c72d111ca9c9c8d36e6b2a2cdc6"
+  },
+  "frozen_matrix": {
+    "representations": [
+      "practical",
+      "controlled_zero",
+      "candidate"
+    ],
+    "seeds": [
+      1001,
+      1002,
+      1003
+    ],
+    "runs": 9,
+    "component_weighting": "inverse_sqrt",
+    "checkpoint_metric": "validation_average_precision",
+    "validation_only": true
+  },
+  "boundary": {
+    "combined_test_bearing_index_read": false,
+    "test_manifest_read": false,
+    "test_pt_read_or_generated": false,
+    "test_predictions_read_or_written": false,
+    "test_loader_created": false,
+    "test_inference": false,
+    "test_unlock_after_this_freeze": false,
+    "reason": "This freeze authorizes only P2-A3a validation-only paired training. P2-A3b construct-validity gates remain required before any written test unlock."
+  }
+}

@@ -6,5 +6,11 @@
   "scope": "author-owned PSHGuard software and associated documentation; see docs/LICENSE_SCOPE.md",
   "third_party_terms_preserved": true,
   "data_and_weights_licence_assigned_by_this_update": false,
-  "public_release_or_doi_claimed": false
+  "public_release_or_doi_claimed": false,
+  "separate_model_grants_author_confirmed": {
+    "date": "2026-11-07",
+    "hgt_checkpoints": "MIT",
+    "modernbert_finetunes": "Apache-2.0",
+    "record": "metadata/MODEL_ATTACHMENT.json"
+  }
 }

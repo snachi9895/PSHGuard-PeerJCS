@@ -1,0 +1,173 @@
+{
+  "date": "2026-11-08",
+  "supplementary_archive": "data/supplementary/saved_outputs_v1.zip",
+  "members": 70,
+  "uncompressed_bytes": 50326955,
+  "archive_bytes": 10853140,
+  "archive_sha256": "ab23a1be686e7e66d63f90ec168626df24df19c07e2765e685b2f93803bca85c",
+  "package_identity_checks": [
+    {
+      "member": "graph_ablation/s9b_graph_representation_oof_predictions.csv",
+      "rows": 2137,
+      "population": "validation",
+      "label_columns_checked": [
+        "y_true"
+      ]
+    },
+    {
+      "member": "fusion_ablation/s9bf_ablation_fusion_oof_predictions.csv",
+      "rows": 2137,
+      "population": "validation",
+      "label_columns_checked": [
+        "y_true"
+      ]
+    },
+    {
+      "member": "gat_control/s9j_homogeneous_gat_oof_predictions.csv",
+      "rows": 2137,
+      "population": "validation",
+      "label_columns_checked": [
+        "y_true"
+      ]
+    },
+    {
+      "member": "perturbations/benign_file_padding/robustness_predictions.csv",
+      "rows": 2137,
+      "population": "validation",
+      "label_columns_checked": [
+        "y_true"
+      ]
+    },
+    {
+      "member": "perturbations/benign_file_padding/seed1001_validation_predictions.csv",
+      "rows": 2137,
+      "population": "validation",
+      "label_columns_checked": [
+        "y_true"
+      ]
+    },
+    {
+      "member": "perturbations/benign_file_padding/seed1002_validation_predictions.csv",
+      "rows": 2137,
+      "population": "validation",
+      "label_columns_checked": [
+        "y_true"
+      ]
+    },
+    {
+      "member": "perturbations/benign_file_padding/seed1003_validation_predictions.csv",
+      "rows": 2137,
+      "population": "validation",
+      "label_columns_checked": [
+        "y_true"
+      ]
+    },
+    {
+      "member": "perturbations/local_identifier_rename/robustness_predictions.csv",
+      "rows": 2137,
+      "population": "validation",
+      "label_columns_checked": [
+        "y_true"
+      ]
+    },
+    {
+      "member": "perturbations/local_identifier_rename/seed1001_validation_predictions.csv",
+      "rows": 2137,
+      "population": "validation",
+      "label_columns_checked": [
+        "y_true"
+      ]
+    },
+    {
+      "member": "perturbations/local_identifier_rename/seed1002_validation_predictions.csv",
+      "rows": 2137,
+      "population": "validation",
+      "label_columns_checked": [
+        "y_true"
+      ]
+    },
+    {
+      "member": "perturbations/local_identifier_rename/seed1003_validation_predictions.csv",
+      "rows": 2137,
+      "population": "validation",
+      "label_columns_checked": [
+        "y_true"
+      ]
+    },
+    {
+      "member": "external_baselines/Bandit4Mal.csv",
+      "rows": 2128,
+      "population": "test",
+      "label_columns_checked": [
+        "label_int"
+      ]
+    },
+    {
+      "member": "external_baselines/GuardDog.csv",
+      "rows": 2128,
+      "population": "test",
+      "label_columns_checked": [
+        "label_int"
+      ]
+    },
+    {
+      "member": "external_baselines/OSSGadget.csv",
+      "rows": 2128,
+      "population": "test",
+      "label_columns_checked": [
+        "label_int"
+      ]
+    },
+    {
+      "member": "external_baselines/Cerebro_three_seeds.csv",
+      "rows": 2128,
+      "population": "test",
+      "label_columns_checked": [
+        "seed42_label",
+        "seed43_label",
+        "seed44_label"
+      ]
+    },
+    {
+      "member": "external_baselines/PyPIMalDet_seed1001.csv",
+      "rows": 2128,
+      "population": "test",
+      "label_columns_checked": [
+        "label_int"
+      ]
+    },
+    {
+      "member": "external_baselines/PyPIMalDet_seed1002.csv",
+      "rows": 2128,
+      "population": "test",
+      "label_columns_checked": [
+        "label_int"
+      ]
+    },
+    {
+      "member": "external_baselines/PyPIMalDet_seed1003.csv",
+      "rows": 2128,
+      "population": "test",
+      "label_columns_checked": [
+        "label_int"
+      ]
+    },
+    {
+      "member": "source_holdout/final/s9g2_guo_to_datadog_partial_ood_predictions.csv",
+      "rows": 4044,
+      "population": "1348 held-out identities per seed",
+      "seeds": [
+        1001,
+        1002,
+        1003
+      ]
+    }
+  ],
+  "virustotal": {
+    "scope": "sealed aggregate only; no row-level reconstruction",
+    "historical_population_rows": 2128,
+    "unbound_old_cache_not_distributed": true,
+    "metrics_source_sha256": "a193946ac7075a2e096d83088cd41beba210daf84b2b947c2ec69a227c3cc229"
+  },
+  "training_inference_calibration_bootstrap_or_metric_recomputation": false
+}

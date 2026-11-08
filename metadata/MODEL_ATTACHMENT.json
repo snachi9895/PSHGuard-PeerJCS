@@ -1,0 +1,25 @@
+{
+  "status": "published on Zenodo; DOI registration verified; author browser download confirmed",
+  "filename": "PSHGuard_PeerJCS_models_v1_20261107.zip",
+  "bytes": 1801443603,
+  "sha256": "683b8d89aac8378a6711f7298a245e14d1b1f9b93c7eb9cc77269e78825e3923",
+  "file_count": 52,
+  "six_weights_bytes": 1798910736,
+  "paired_seeds": [
+    1001,
+    1002,
+    1003
+  ],
+  "hgt_weights_licence": "MIT",
+  "modernbert_finetune_licence": "Apache-2.0",
+  "source_notices_preserved": true,
+  "author_permission_confirmed_date": "2026-11-07",
+  "public_url": "https://zenodo.org/records/24038283",
+  "doi": "10.5281/zenodo.24038283",
+  "model_loaded_or_evaluated_in_packaging": false,
+  "version": "1.0.0",
+  "concept_doi": "10.5281/zenodo.24038282",
+  "doi_registration_verified": true,
+  "public_access_label_observed": "Open",
+  "verification_report": "verification/zenodo_model_published_24038283_20261107/PUBLICATION_CHECK.json"
+}

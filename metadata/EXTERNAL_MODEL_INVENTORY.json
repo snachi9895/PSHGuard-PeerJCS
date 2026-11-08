@@ -1,6 +1,6 @@
 {
-  "status": "Local existence/size checked; access plan in MODEL_ACCESS_PLAN.csv; weights not bundled or publicly archived",
-  "hash_scope": "Archived expected hashes retained; only existence/size checked in this packaging task",
+  "status": "Full local hashes verified; six checkpoints published in the separately licensed model archive",
+  "hash_scope": "Full current SHA256 checked for all seven listed large model files; no model loaded",
   "models": [
     {
       "original_workspace_relative_path": "experiment_outputs/train_final_v10c_filtered700k_20260612/p3_rcber_batchsafe_paired_validation_20260807_v2/runs/v10c_formal_v2_strict40_ast_event_param_context_type_balanced_ckpt_ap_inverse_sqrt_p3_batchsafe_practical_v2_seed1001/checkpoints/best_model.pt",
@@ -51,5 +51,7 @@
       "bytes": 598487691,
       "included_in_this_draft": false
     }
-  ]
+  ],
+  "model_record": "https://zenodo.org/records/24038283",
+  "model_doi": "10.5281/zenodo.24038283"
 }

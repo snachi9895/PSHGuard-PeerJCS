@@ -1,8 +1,8 @@
 # Reproducibility and reporting
 
-## Checks available in this draft
+## Checks available in this candidate
 
-Run python3 tools/verify_artifact.py for a no-download integrity check. The package contains the frozen split metadata, saved aggregate results, selected final-test/validation prediction tables, statistical outputs, and exact source files for the data figures.
+Run python3 tools/verify_artifact.py for a no-download integrity check. The package contains the frozen split metadata, saved aggregate results, final-test/validation prediction tables and the supplemental saved-output bundle, statistical outputs, and exact source files for the data figures.
 
 This task copied saved results and checked identities only. It did not rerun the formal test, fit calibration or fusion, bootstrap statistics, or model inference.
 
@@ -12,7 +12,7 @@ figure_source/v3/generate_figures.py is copied without modification. It reads it
 
 ## Original inputs and model access
 
-data/access/ORIGINAL_PACKAGE_ACCESS.csv maps all frozen sample identities to original-archive access references; docs/RAW_DATA_ACCESS.md explains the fields and local-only checks. metadata/MODEL_ACCESS_PLAN.csv identifies the six research checkpoints and the pinned base-model/config dependencies. These are access records and a pending attachment plan; raw archives, weights and representation caches are not bundled here. No live archive retrieval or end-to-end run is claimed.
+data/access/ORIGINAL_PACKAGE_ACCESS.csv maps all frozen sample identities to original-archive access references; docs/RAW_DATA_ACCESS.md explains the fields and local-only checks. metadata/MODEL_ACCESS_PLAN.csv identifies the six research checkpoints and the pinned base-model/config dependencies. Dated input-access evidence is recorded in data/access/LIVE_ACCESS_SUMMARY.json. The model attachment is published at https://doi.org/10.5281/zenodo.24038283 with author-confirmed licences; raw archives, weight binaries and representation caches are not bundled in this compact code snapshot. No end-to-end run is claimed. See docs/SAVED_OUTPUTS.md for diagnostic/comparator coverage and its aggregate-only VirusTotal scope.
 
 ## Remaining reconstruction work
 
@@ -22,7 +22,7 @@ The archived entry points below retain the historical workspace layout and are n
 
 - Final six-relation grouping and exact-V2 split: `scripts/final_source_clone_split_20260611/step09_build_final_source_clone_aware_graph_eligible_v2_strict40.py`; independent split audit: `step10_audit_frozen_graph_eligible_v2_strict40.py` in that directory.
 - Graph representation: `scripts/final_graph_v10c_full_20260612/step02_v10c_full_export_pipeline.py` and its retained dependencies.
-- HGT: `scripts/formal_training_v10c_20260612/train_v10c_formal_hgt.py`.
+- Final HGT practical paired-run entry point: `scripts/formal_training_v10c_20260612/train_p3_rcber_paired_hgt_v2.py` with model kind practical; `train_v10c_formal_hgt.py` remains a retained base trainer. The local import closure and recorded source bindings are in metadata/FINAL_HGT_SOURCE_BINDING.json.
 - Sequence extraction/training: `build_s1_base_modernbert_cache.py`, `run_s1_base_modernbert_screen.py`, and `run_s1_base_modernbert_confirmatory.py` in that directory.
 - Same-seed fusion: `scripts/formal_training_v10c_20260612/audit_s8a_same_seed_paired_fusion.py`.
 - Later descriptive aggregation: `research_state/single_hgt_ablation_reporting_20261021/scripts/summarize_saved_metrics.py`.
@@ -50,3 +50,7 @@ Historical README/spec files may contain prospective phrases such as “test loc
 `docs/RECORDED_ENVIRONMENTS.md` records the historical versions. `requirements.txt` contains broad compatibility ranges, not an exact lockfile or a claim that an installation was tested in this packaging task. CUDA/PyTorch builds and the pinned ModernBERT revision require separate acquisition. The original implementation supports `PSHGUARD_ROOT` for workspace configuration where provided by a script; inspect each entry point before use.
 
 No experiment, calibration/threshold fit, model inference, or bootstrap was run to create this distribution. The validation budget fits were completed in the separately frozen October analysis; this package copies their saved summaries.
+
+## Optional model-file check
+
+After manually downloading the published model ZIP, run `python3 tools/check_model_archive.py /path/to/model.zip`. This checks the full ZIP size and SHA256 without extracting or deserializing a checkpoint. The default artifact verifier does not require the 1.80 GB file and makes no network requests.

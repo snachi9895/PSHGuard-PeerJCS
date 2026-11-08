@@ -1,0 +1,93 @@
+{
+  "status": "four missing local imports added byte-for-byte; frozen code references preserved",
+  "added_local_imports": [
+    "scripts/formal_training_v10c_20260612/p3_rcber_model.py",
+    "scripts/formal_training_v10c_20260612/p3_schema_complete_batching.py",
+    "scripts/formal_training_v10c_20260612/train_p2a3_paired_hgt.py",
+    "scripts/formal_training_v10c_20260612/train_p3_rcber_paired_hgt_v2.py"
+  ],
+  "static_import_closure_files": [
+    "scripts/final_graph_v9_20260608/train_v9_small_hgt_readout.py",
+    "scripts/formal_training_v10c_20260612/audit_binary_operating_points.py",
+    "scripts/formal_training_v10c_20260612/p3_rcber_model.py",
+    "scripts/formal_training_v10c_20260612/p3_schema_complete_batching.py",
+    "scripts/formal_training_v10c_20260612/train_p2a3_paired_hgt.py",
+    "scripts/formal_training_v10c_20260612/train_p3_rcber_paired_hgt_v2.py",
+    "scripts/formal_training_v10c_20260612/train_v10c_formal_hgt.py",
+    "scripts/local_wsl_experiments/train_v7c_small_hgt_smoke.py",
+    "scripts/local_wsl_experiments/train_v8b_diverse_small_hgt_smoke.py"
+  ],
+  "training_source_hash_checks": [
+    {
+      "seed": 1001,
+      "recorded_key": "p3_v2_trainer_sha256",
+      "path": "scripts/formal_training_v10c_20260612/train_p3_rcber_paired_hgt_v2.py",
+      "sha256": "3a2facc9f2dde78037433472d23bcb1b8733206bc33880a97a13cfabd8e25c1a",
+      "matches_recorded_training_configuration": true
+    },
+    {
+      "seed": 1001,
+      "recorded_key": "p3_model_script_sha256",
+      "path": "scripts/formal_training_v10c_20260612/p3_rcber_model.py",
+      "sha256": "88f7bfaf64d126f2c9889e24ea6c9bdb22948e2a5f68a4c8efe8e744601f8ab1",
+      "matches_recorded_training_configuration": true
+    },
+    {
+      "seed": 1001,
+      "recorded_key": "p3_batching_script_sha256",
+      "path": "scripts/formal_training_v10c_20260612/p3_schema_complete_batching.py",
+      "sha256": "d8177f7733da99e2b29c80ec71f04f2e406d2d9e5b328f58cfd9e554bba13fca",
+      "matches_recorded_training_configuration": true
+    },
+    {
+      "seed": 1002,
+      "recorded_key": "p3_v2_trainer_sha256",
+      "path": "scripts/formal_training_v10c_20260612/train_p3_rcber_paired_hgt_v2.py",
+      "sha256": "3a2facc9f2dde78037433472d23bcb1b8733206bc33880a97a13cfabd8e25c1a",
+      "matches_recorded_training_configuration": true
+    },
+    {
+      "seed": 1002,
+      "recorded_key": "p3_model_script_sha256",
+      "path": "scripts/formal_training_v10c_20260612/p3_rcber_model.py",
+      "sha256": "88f7bfaf64d126f2c9889e24ea6c9bdb22948e2a5f68a4c8efe8e744601f8ab1",
+      "matches_recorded_training_configuration": true
+    },
+    {
+      "seed": 1002,
+      "recorded_key": "p3_batching_script_sha256",
+      "path": "scripts/formal_training_v10c_20260612/p3_schema_complete_batching.py",
+      "sha256": "d8177f7733da99e2b29c80ec71f04f2e406d2d9e5b328f58cfd9e554bba13fca",
+      "matches_recorded_training_configuration": true
+    },
+    {
+      "seed": 1003,
+      "recorded_key": "p3_v2_trainer_sha256",
+      "path": "scripts/formal_training_v10c_20260612/train_p3_rcber_paired_hgt_v2.py",
+      "sha256": "3a2facc9f2dde78037433472d23bcb1b8733206bc33880a97a13cfabd8e25c1a",
+      "matches_recorded_training_configuration": true
+    },
+    {
+      "seed": 1003,
+      "recorded_key": "p3_model_script_sha256",
+      "path": "scripts/formal_training_v10c_20260612/p3_rcber_model.py",
+      "sha256": "88f7bfaf64d126f2c9889e24ea6c9bdb22948e2a5f68a4c8efe8e744601f8ab1",
+      "matches_recorded_training_configuration": true
+    },
+    {
+      "seed": 1003,
+      "recorded_key": "p3_batching_script_sha256",
+      "path": "scripts/formal_training_v10c_20260612/p3_schema_complete_batching.py",
+      "sha256": "d8177f7733da99e2b29c80ec71f04f2e406d2d9e5b328f58cfd9e554bba13fca",
+      "matches_recorded_training_configuration": true
+    }
+  ],
+  "historical_freeze_specs_added": [
+    "scripts/formal_training_v10c_20260612/p3_rcber_primary_spec_v2.json",
+    "scripts/formal_training_v10c_20260612/p3_rcber_freeze_manifest_v2.json",
+    "scripts/formal_training_v10c_20260612/p2a3_primary_training_spec_v1.json",
+    "scripts/formal_training_v10c_20260612/p2a3_primary_freeze_manifest_v1.json"
+  ],
+  "portable_training_or_inference_tested": false,
+  "note": "Original frozen code retains some historical workspace paths and guard inputs. Static source completeness and hash identity do not establish a portable end-to-end run."
+}

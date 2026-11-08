@@ -1,0 +1,190 @@
+{
+  "artifact": {
+    "name": "P2-A3a paired primary validation-only training specification",
+    "version": "1.0.0",
+    "frozen_date": "2026-08-06",
+    "status": "frozen_before_p2a3_validation_predictions_or_training"
+  },
+  "stage_boundary": {
+    "current_stage": "P2-A3a primary paired performance screen",
+    "matrix_runs": 9,
+    "representations": 3,
+    "seeds": 3,
+    "not_yet_authorized": [
+      "P2-A3b matched DeepSets, relation shuffle, behavior-breaking counterfactual, and channel-ablation runs",
+      "test PT generation",
+      "test loader construction",
+      "test inference",
+      "test-based threshold, seed, checkpoint, or feature selection"
+    ],
+    "staging_reason": "Run the cheaper predeclared paired performance gate first. If the candidate fails against either reference, the frozen P2 stop policy forbids spending additional runs to rescue it; if it passes, P2-A3b construct-validity experiments are frozen and run next. Passing P2-A3a alone does not establish the primary behavior claim and does not unlock test."
+  },
+  "upstream_sha256": {
+    "p2_behavior_first_protocol": "407d5dca91fea3775cb4aecb7fb1e9568c30e81c6b5b66e5d7b76ac58813b023",
+    "p2_behavior_encoder_spec": "8b8c33f50732af11d3caa904fd5b71a88fa761e1b737efa5415f830e3c32aa35",
+    "p2_behavior_encoder": "88496710e025262a9bc8035135886099358ce91c8cce2ebda0f8422cd754d382",
+    "p2a2_full_spec": "47a6c0c601167db0842842505a33745bbd34a6a9381c8055916c6e703ac3bfba",
+    "p2a2_full_summary": "33316ff8bd181125bd6b71116a968f94caa1654133160bb2276df654d307cd6f",
+    "p2a2_full_freeze_manifest": "762b97007cde1d386946a8646c4f50aa4cfcb727a44abd9eda769d7072cc6c9f",
+    "p2a2_full_artifact_inventory": "2df4ff81353f28b571090586f36d1e9e7373a168f0b43696834a6aa909251de1",
+    "p2a2_full_conversion_manifest": "627703c696155a6221a2d0baa5fec18ed53af6a44be15ff21b42f1ba930f325b",
+    "p2a2_full_equivalence_audit": "d959e6fce96fa44dee17a93ee91270349d478c72d111ca9c9c8d36e6b2a2cdc6",
+    "base_trainer": "28eb9beab07ef941444c6f53f11ec6019c55d351375f2936b843954ff786632c",
+    "base_architecture": "ffb646d26a6fe19eaa86464c44825e0e6ca8f1fd712d5866eacafea1bff5c844",
+    "train_manifest": "8635d5e35c28ab750d57b3cc9eedbbc390b6f5f024ba269a94e23856faf0d882",
+    "validation_manifest": "80dfd90b01d0e19f04fdde640a87b472c9491b3f31c677ad336dc3bc18583d18"
+  },
+  "input_contract": {
+    "dataset": "V2 strict40 source-clone-aware",
+    "allowed_splits": [
+      "train",
+      "val"
+    ],
+    "expected_split_counts": {
+      "train": 16613,
+      "val": 2137
+    },
+    "expected_total_rows": 18750,
+    "full_conversion_manifest": "experiment_outputs/train_final_v10c_filtered700k_20260612/p2a2_full_dev_pt_conversion_20260806_v1/full_conversion_manifest.csv",
+    "trainer_loader_columns_replaced": [
+      "pt_path_v8",
+      "pt_path_v9"
+    ],
+    "manifest_join_key": [
+      "graph_id",
+      "split"
+    ],
+    "path_policy": "The frozen train and validation manifests are read directly. The combined test-bearing index is never opened. PT paths are replaced only after an exact one-to-one graph_id/split join to the frozen P2-A2F conversion manifest.",
+    "artifact_integrity": "Every run verifies frozen file SHA256 values, exact graph membership, PT path uniqueness, current PT byte sizes, and P2-A2F PASS status before constructing a loader. P2-A2F already independently reloaded and SHA-audited all 37,500 new PT files."
+  },
+  "representations": {
+    "practical": {
+      "role": "current coarse V10c practical reference",
+      "pt_path_column": "old_pt_path",
+      "pt_sha256_column": "old_pt_sha256",
+      "pt_bytes_column": "old_pt_bytes",
+      "dimensions": {
+        "module": 4,
+        "ast": 12,
+        "param": 29,
+        "event": 18
+      }
+    },
+    "controlled_zero": {
+      "role": "same P2 dimensions and code path with every appended semantic slot fixed to zero",
+      "pt_path_column": "controlled_zero_pt_path",
+      "pt_sha256_column": "controlled_zero_pt_sha256",
+      "pt_bytes_column": "controlled_zero_pt_bytes",
+      "dimensions": {
+        "module": 4,
+        "ast": 29,
+        "param": 42,
+        "event": 28
+      }
+    },
+    "candidate": {
+      "role": "identity-suppressed P2 behavior representation candidate",
+      "pt_path_column": "candidate_pt_path",
+      "pt_sha256_column": "candidate_pt_sha256",
+      "pt_bytes_column": "candidate_pt_bytes",
+      "dimensions": {
+        "module": 4,
+        "ast": 29,
+        "param": 42,
+        "event": 28
+      }
+    }
+  },
+  "fixed_training_contract": {
+    "model_mode": "ast_event_param_context",
+    "readout": "type_balanced",
+    "hidden_dim": 64,
+    "batch_size": 4,
+    "num_workers": 2,
+    "optimizer": "adam",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0,
+    "malicious_class_weight": 1.5,
+    "component_weighting": "inverse_sqrt",
+    "component_weighting_rationale": "This is the accepted current P1 practical training reference: it improved validation AP in the completed seed-1001 mechanism audit, whereas AdamW and source-preserving R2 were rejected. Applying it identically to all three representations isolates representation gain; the predeclared sdist and Datadog subgroup gates guard its known source-mass tradeoff.",
+    "gradient_accumulation_steps": 1,
+    "gradient_clip": 1.0,
+    "determinism": "strict",
+    "minimum_epochs": 8,
+    "maximum_epochs": 30,
+    "patience": 6,
+    "minimum_delta": 0.0005,
+    "checkpoint_metric": "validation_average_precision",
+    "checkpoint_tie_break": [
+      "higher_validation_auroc",
+      "lower_validation_loss",
+      "earlier_epoch"
+    ],
+    "validation_only": true,
+    "seeds": [
+      1001,
+      1002,
+      1003
+    ]
+  },
+  "paired_initialization_contract": {
+    "candidate_and_controlled_zero": "For every seed, both runs use identical model dimensions, architecture code, deterministic seed setup, and parameter creation order. Their complete initial state_dict SHA256 values must be bit-identical in CPU preflight.",
+    "practical_reference": "The practical reference has smaller input projections, so tensors with changed shapes cannot be bit-identical. It still uses the same seed and every non-representation training setting."
+  },
+  "run_matrix": [
+    {"position": 1, "representation": "practical", "seed": 1001},
+    {"position": 2, "representation": "controlled_zero", "seed": 1001},
+    {"position": 3, "representation": "candidate", "seed": 1001},
+    {"position": 4, "representation": "practical", "seed": 1002},
+    {"position": 5, "representation": "controlled_zero", "seed": 1002},
+    {"position": 6, "representation": "candidate", "seed": 1002},
+    {"position": 7, "representation": "practical", "seed": 1003},
+    {"position": 8, "representation": "controlled_zero", "seed": 1003},
+    {"position": 9, "representation": "candidate", "seed": 1003}
+  ],
+  "output_contract": {
+    "root": "experiment_outputs/train_final_v10c_filtered700k_20260612/p2a3_primary_paired_validation_20260806_v1",
+    "run_subdirectory": "runs",
+    "formal_result": "validation_result.json",
+    "formal_predictions": "validation_predictions.csv",
+    "forbidden_files": [
+      "test_predictions.csv",
+      "final_result.json"
+    ],
+    "required_python": "/home/junwei/miniconda3/envs/pypi_260522/bin/python"
+  },
+  "resume_contract": {
+    "within_run": "The unchanged base trainer atomically saves last_state.pt after every completed epoch, including optimizer and RNG states. Ctrl+C can discard only the current incomplete epoch; rerunning the identical matrix command resumes from the last completed epoch.",
+    "across_matrix": "A completed validation_result.json is independently validated and skipped. The first incomplete configuration resumes, and all later pending configurations remain untouched.",
+    "configuration_drift": "The checkpoint binds the wrapper, freeze manifest, representation, dimensions, PT conversion manifest, hyperparameters, and seed SHA/config fields. Any mismatch fails closed.",
+    "concurrency": "A nonblocking process lock refuses a second simultaneous matrix runner in the same output root.",
+    "interrupt_exit": 130
+  },
+  "primary_gate_contract": {
+    "source": "p2_behavior_first_protocol_v1.json candidate_performance_gates",
+    "candidate_must_pass_against": [
+      "practical",
+      "controlled_zero"
+    ],
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20260805,
+    "bootstrap_interval": "two-sided percentile 95% interval using numpy quantile linear interpolation",
+    "precision_constrained_threshold": {
+      "score": "validation logit_margin",
+      "minimum_pooled_precision": 0.95,
+      "objective": "maximum pooled recall over distinct observed score thresholds with all ties included",
+      "deterministic_tie_break": [
+        "higher_pooled_precision",
+        "higher_threshold"
+      ]
+    },
+    "audit_runs_automatically_after_all_nine_results": true,
+    "pass_action": "freeze and implement P2-A3b construct-validity experiments; test remains locked",
+    "fail_action": "stop P2 candidate after validation; do not read or generate test artifacts"
+  },
+  "time_budget_advisory_not_a_selection_rule": {
+    "historical_practical_seed1001_seconds_for_14_epochs": 3260.4161174300025,
+    "estimated_matrix_wall_clock_single_gpu": "approximately 9 to 12 hours, depending on early stopping and the larger P2 input projections",
+    "estimate_does_not_change_frozen_epoch_or_stopping_rules": true
+  }
+}

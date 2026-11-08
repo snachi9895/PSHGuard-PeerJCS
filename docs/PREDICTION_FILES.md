@@ -11,4 +11,6 @@ All prediction/statistics files were copied from saved experiment outputs withou
 - data/statistics/validation/: original saved S8 component/hierarchical seed-component bootstrap outputs.
 - data/statistics/source_size/: saved bootstrap array and its explicit axes. Retain the missing Datadog weighted intervals and validity rule.
 
-Scores and predictions are saved evaluation outputs, not new labels or deployment-probability guarantees. Join package-level fields by sample_id to data/manifests/. Additional external-detector and diagnostic input coverage must be audited before claiming that every result can be recomputed from this package alone.
+Scores and predictions are saved evaluation outputs, not new labels or deployment-probability guarantees. Join package-level fields by sample_id to data/manifests/. The additional diagnostic/comparator outputs and exact coverage are documented in docs/SAVED_OUTPUTS.md. VirusTotal remains an aggregate-only comparator in the sealed interface.
+
+- data/supplementary/saved_outputs_v1.zip: additional byte-identical saved outputs; see metadata/SUPPLEMENTARY_OUTPUT_INDEX.csv and metadata/SAVED_OUTPUT_COVERAGE.json for the member list and identity checks.

@@ -1,0 +1,13 @@
+# Saved diagnostic and comparator outputs
+
+data/supplementary/saved_outputs_v1.zip contains unmodified historical CSV/JSON files. metadata/SUPPLEMENTARY_OUTPUT_INDEX.csv maps each ZIP member to its workspace source, SHA256, byte count, paper item and population. File names inside this ZIP use a compact distribution layout; values and source bytes are unchanged.
+
+The bundle contains the prepared-input graph/sequence timing profiles; graph and fused-ablation OOF scores and saved statistical draws; homogeneous-GAT controls; two perturbation conditions with original and perturbed scores; calibration bins, error/subgroup records and saved draws; partial source-holdout populations and branch/fusion outputs; and saved external-detector records for Table 1. Exact three-seed PyPIMalDet outputs are bound to the historical R4 acceptance input manifest. That baseline is an independent aligned reproduction, as described in the manuscript, and is not labelled official upstream software.
+
+Bandit4Mal, GuardDog, OSSGadget, Cerebro and each PyPIMalDet seed have 2,128 sample identities matching the frozen final test. The Cerebro CSV stores seeds 42-44 in separate columns. Existing PSHGuard and EA4MP test outputs remain in data/predictions/final_test/. Validation OOF output files contain the same 2,137 validation identities. The partial source holdout contains 1,348 evaluation identities per seed; it has its own saved population definitions and is not the final test.
+
+VirusTotal has a sealed 2,128-row aggregate interface in the formal reporting audit, not distributed per-package predictions. Its exact frozen aggregate CSV is included. A later inspection found that an older cache manifest had only 96 of 2,128 cached reports and did not fully match the final-test identities. That cache is excluded; it was not used to reconstruct or replace the sealed result. No VirusTotal API query was made. Full row-level recomputation of this comparator is outside this distribution's verified scope.
+
+The files preserve historical reporting objects. Some original graph-ablation records include a three-HGT auxiliary ensemble; current Table 2 and Figure 4 use the labelled single-HGT and same-seed fusion sources already distributed. Historical values do not replace current manuscript values. Saved bootstrap draws are copied, not regenerated. Datadog weighted intervals retain their saved missing state.
+
+Run `python3 tools/verify_artifact.py` from the repository root. It checks ZIP-member hashes and package identities as well as the ordinary distribution inventory. Use any ZIP reader to inspect the CSVs/JSONs; no experiment program is needed to read them. This check does not derive metrics or run a model.

@@ -19,3 +19,5 @@ The scientific results reuse the frozen PSHGuard experiments. The figure numberi
 | Partial source holdout | Saved S9-G2 files under results/historical_20260911/ | List/prefix-defined partial shift, not an independent temporal test. |
 
 The original historical aggregates are retained for provenance. Some describe a three-HGT auxiliary ensemble rather than the final single-HGT branch. Use the current indices and the labelled figure-source files when reading them.
+
+Additional diagnostic and comparator inputs are in data/supplementary/saved_outputs_v1.zip. metadata/SUPPLEMENTARY_OUTPUT_INDEX.csv assigns each member to its paper item. See docs/SAVED_OUTPUTS.md for population and historical-system distinctions.

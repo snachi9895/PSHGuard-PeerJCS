@@ -1,0 +1,22 @@
+{
+  "historical_input_manifest": "experiment_outputs/supplementary_review_20260906/G_R4_final_acceptance/attempts/20260905T210937Z_7141/input_and_code_manifest.json",
+  "historical_input_manifest_sha256": "4b59a7beebd9c3aba12909f921961e7db7b637936123a8791d7be68e47ec7ea3",
+  "prediction_bindings": [
+    {
+      "bytes": 867889,
+      "path": "baselines/pypimaldet/outputs/R4_final_test_v1/seed1001/test_predictions.csv",
+      "sha256": "df85b9be0c2682d678f7f6a0d7a8d0a8ed6a0121ce3f1c438f0163900f3c25ce"
+    },
+    {
+      "bytes": 858605,
+      "path": "baselines/pypimaldet/outputs/R4_final_test_v1/seed1002/test_predictions.csv",
+      "sha256": "4dbbda0f29af5b6f77f00ddcf45c0a6b3a636727ccbd13ecc89e09c52564e7f2"
+    },
+    {
+      "bytes": 859937,
+      "path": "baselines/pypimaldet/outputs/R4_final_test_v1/seed1003/test_predictions.csv",
+      "sha256": "88e56a7d09f6dd858287d6b856d1eebc5ba0d557ed942c9691815cf8ff8cc680"
+    }
+  ],
+  "metrics_recomputed": false
+}

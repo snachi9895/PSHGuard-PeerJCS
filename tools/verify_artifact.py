@@ -87,6 +87,20 @@ def main():
     assert licence['software_licence'] == 'MIT' and licence['main_code_rights_confirmed']
     assert not licence['data_and_weights_licence_assigned_by_this_update']
     assert (ROOT / 'LICENSE').read_text(encoding='utf-8').startswith('MIT License\n')
+    live = json.loads((ROOT / 'data/access/LIVE_ACCESS_SUMMARY.json').read_text(encoding='utf-8'))
+    assert live['access_check_counts'] == {'pypi_json_sha256_and_cdn_head': 10613, 'pypi_cdn_streamed_sha256': 30, 'remote_git_tree_and_local_blob_hash': 10235}
+    assert Counter(r['access_check_scope'] for r in access) == live['access_check_counts']
+    assert all(r['access_checked_date'] == '2026-11-07' for r in access)
+    assert all(urlsplit(r['archive_download_reference']).scheme == 'https' for r in access)
+    binding = json.loads((ROOT / 'metadata/FINAL_HGT_SOURCE_BINDING.json').read_text(encoding='utf-8'))
+    assert all((ROOT / rel).is_file() for rel in binding['static_import_closure_files'])
+    for binding_check in binding['training_source_hash_checks']:
+        assert hashlib.sha256((ROOT / binding_check['path']).read_bytes()).hexdigest() == binding_check['sha256']
+    attachment = json.loads((ROOT / 'metadata/MODEL_ATTACHMENT.json').read_text(encoding='utf-8'))
+    assert attachment['hgt_weights_licence'] == 'MIT' and attachment['modernbert_finetune_licence'] == 'Apache-2.0'
+    assert attachment['public_url'] == 'https://zenodo.org/records/24038283' and attachment['doi'] == '10.5281/zenodo.24038283'
+    from verify_saved_outputs import verify_saved_outputs
+    verify_saved_outputs(ROOT)
     print(f'PASS: {len(access)} original-archive access identities; no URL requests')
     print('PASS: MIT scope metadata and 11 model/config access-plan records')
     print(f'PASS: {len(files)} checksummed files; complete distribution inventory verified')

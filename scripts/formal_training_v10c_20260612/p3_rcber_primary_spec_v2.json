@@ -1,0 +1,155 @@
+{
+  "artifact": {
+    "name": "P3 batch-safe practical-vs-RCBER paired primary validation-only specification",
+    "version": "2.0.0",
+    "frozen_date": "2026-08-07",
+    "status": "frozen_after_v1_pre_epoch_collation_abort_before_v2_training_or_predictions"
+  },
+  "incident_boundary": {
+    "v1_status": "aborted before the first completed epoch and before candidate validation predictions",
+    "v1_scientific_result": false,
+    "root_cause": "Individually valid HeteroData graphs omit stores for zero-edge relations. With a heterogeneous batch size greater than one, PyG can omit relations from later graphs or compute edge offsets without accounting for intermediate graphs that lack the store.",
+    "development_audit": {
+      "graphs": 18750,
+      "batches_at_size_4": 4689,
+      "individual_relation_bound_violations": 0,
+      "pre_repair_corrupt_batches": 2352,
+      "pre_repair_corruption_rate": 0.5015994881637876,
+      "pre_repair_batch_separation_failures": 1894
+    },
+    "consequence": "The completed P2 practical runs are retained as historical diagnostics but are not valid paired P3 references. Both practical and RCBER must be retrained under the repaired loader."
+  },
+  "scientific_questions": [
+    "What is the valid practical V10c development performance after schema-complete heterogeneous batching?",
+    "Under the same repaired batching and frozen training contract, does RCBER improve validation ranking and unseen-source component recall over the repaired practical model?"
+  ],
+  "stage_boundary": {
+    "current_stage": "P3-v2 batch-safe paired primary validation-only architecture screen",
+    "model_arms": ["practical", "rcber"],
+    "seeds": [1001, 1002, 1003],
+    "paired_runs": 6,
+    "matrix_order": [
+      ["practical", 1001], ["rcber", 1001],
+      ["practical", 1002], ["rcber", 1002],
+      ["practical", 1003], ["rcber", 1003]
+    ],
+    "not_authorized": [
+      "graph rebuilding or PT rewriting",
+      "raw API/callee names, raw Param.text, or source code",
+      "package names, family identities, or label-derived inputs",
+      "additional architecture candidates or post-hoc hyperparameter sweeps",
+      "test manifest, test PT, test loader, test inference, or test-based selection"
+    ]
+  },
+  "input_contract": {
+    "dataset": "V2 strict40 source-clone-aware",
+    "allowed_splits": ["train", "val"],
+    "expected_split_counts": {"train": 16613, "val": 2137},
+    "expected_total_rows": 18750,
+    "pt_representation": "unchanged practical V10c PT selected by old_pt_path in the audited P2-A2F conversion manifest",
+    "dimensions": {"module": 4, "ast": 12, "param": 29, "event": 18},
+    "allowed_edge_types": 14,
+    "graph_rebuild": false,
+    "pt_rewrite": false,
+    "raw_text_read": false,
+    "test_access": false
+  },
+  "batching_repair_contract": {
+    "name": "schema_complete_empty_edge_stores",
+    "version": "2.0.0",
+    "operation": "After the unchanged dataset loads and mode-filters one graph, materialize each missing allowed relation as torch.empty((2,0), dtype=torch.long) before PyG collation.",
+    "per_graph_validation": [
+      "exact expected node-store set",
+      "exact expected allowed edge-store set after completion",
+      "rank-2 [2,E] torch.long edge_index",
+      "all endpoints within the individual source and destination node bounds"
+    ],
+    "semantic_boundary": "No node, non-empty edge, feature, label, graph identity, or sample order is changed. Empty-store materialization is a loader representation repair, not graph reconstruction.",
+    "required_full_audit": "All 18,750 development graphs must batch and separate with zero tensor/edge round-trip mismatch and zero relation endpoint graph mismatch before GPU authorization."
+  },
+  "model_arms": {
+    "practical": {
+      "architecture": "unchanged practical TypeBalancedHGTV9",
+      "purpose": "valid batch-safe reference and direct estimate of the batching repair effect",
+      "historical_reference_reuse": false
+    },
+    "rcber": {
+      "architecture": "the unchanged V1 Relation-Conditioned Behavior-Evidence Readout candidate",
+      "eligible_forward_relations": [
+        ["ast", "E_Event", "event"],
+        ["ast", "E_Param", "param"],
+        ["event", "E_EventParam", "param"]
+      ],
+      "edge_evidence": "Linear([h_src,h_dst,h_src elementwise-product h_dst],64) plus relation embedding, LayerNorm, and ReLU",
+      "pooling": "per-graph and per-relation mean/max followed by equal relation balancing",
+      "parameter_budget": "no more than 1.10 times the practical trainable parameter count",
+      "anti_shortcut": "No lexical identity is read; Param contributes to the added block only as an endpoint of an existing behavior relation; edge counts are not classifier inputs."
+    }
+  },
+  "fixed_training_contract": {
+    "mode": "ast_event_param_context",
+    "hidden_dim": 64,
+    "batch_size": 4,
+    "num_workers": 2,
+    "optimizer": "adam",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0,
+    "malicious_class_weight": 1.5,
+    "component_weighting": "inverse_sqrt",
+    "gradient_accumulation_steps": 1,
+    "gradient_clip": 1.0,
+    "determinism": "strict",
+    "minimum_epochs": 8,
+    "maximum_epochs": 30,
+    "patience": 6,
+    "minimum_delta": 0.0005,
+    "checkpoint_metric": "validation_average_precision",
+    "validation_only": true
+  },
+  "primary_gate_contract": {
+    "paired_unit": "same-seed RCBER minus repaired practical",
+    "average_precision": {
+      "minimum_three_seed_mean_delta": 0.005,
+      "minimum_seed_delta_for_at_least_two_of_three": 0.001,
+      "minimum_worst_seed_delta": -0.01,
+      "component_bootstrap_replicates": 10000,
+      "component_bootstrap_seed": 20260807,
+      "required_95_percentile_ci_lower": "greater than 0"
+    },
+    "raw_argmax_f1_nondegradation": {
+      "minimum_mean_delta": -0.01,
+      "minimum_worst_seed_delta": -0.03
+    },
+    "sdist_component_macro_recall": {
+      "minimum_mean_delta": 0.01,
+      "minimum_seed_delta_for_at_least_two_of_three": 0.005,
+      "minimum_worst_seed_delta": -0.03
+    },
+    "datadog_component_macro_recall_nondegradation": {
+      "minimum_mean_delta": -0.01,
+      "minimum_worst_seed_delta": -0.03
+    },
+    "all_required": true
+  },
+  "historical_diagnostic_contract": {
+    "comparison": "repaired practical minus completed P2 practical per seed",
+    "purpose": "estimate the observed impact of the batching repair",
+    "primary_gate_input": false,
+    "paper_baseline_status": "old schema-incomplete runs cannot be presented as the corrected model result"
+  },
+  "resume_contract": {
+    "within_run": "last_state.pt is atomically saved after each completed epoch; Ctrl+C can discard only the current incomplete epoch",
+    "across_matrix": "validated completed arms are skipped; an interrupted arm resumes; later arms stay pending",
+    "configuration_drift": "model arm, repair implementation, model implementation, protocol, inputs, hyperparameters, and seed are checkpoint-bound",
+    "concurrency": "a nonblocking output-root lock refuses a second matrix runner",
+    "interrupt_exit": 130
+  },
+  "output_contract": {
+    "root": "experiment_outputs/train_final_v10c_filtered700k_20260612/p3_rcber_batchsafe_paired_validation_20260807_v2",
+    "run_subdirectory": "runs",
+    "formal_result": "validation_result.json",
+    "formal_predictions": "validation_predictions.csv",
+    "forbidden_files": ["test_predictions.csv", "final_result.json"],
+    "required_python": "/home/junwei/miniconda3/envs/pypi_260522/bin/python"
+  }
+}

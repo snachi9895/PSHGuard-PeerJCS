@@ -2,7 +2,7 @@
 
 Code and supporting data for PSHGuard: Detecting Malicious PyPI Packages With Complementary Behavioral Views.
 
-This is private preparation draft v2 for the PeerJ Computer Science manuscript. It contains frozen research implementation, package/split metadata, saved predictions, statistical outputs, and source data for the paper's data figures. No acceptance, public archival release, or DOI is claimed.
+This is local preparation candidate v4 for the PeerJ Computer Science manuscript. It contains frozen research implementation, package/split metadata, saved predictions, statistical outputs, and source data for the paper's data figures. The separate frozen model archive is published at https://doi.org/10.5281/zenodo.24038283 (version 1.0.0). The code/data archive DOI is pending; this snapshot does not claim an accepted journal publication.
 
 ## Start here
 
@@ -11,7 +11,8 @@ This is private preparation draft v2 for the PeerJ Computer Science manuscript. 
 3. docs/DATA_DICTIONARY.md and docs/PREDICTION_FILES.md explain columns and reporting identities.
 4. docs/RELEASE_READINESS.md lists items still to resolve before public release and journal submission.
 5. docs/RAW_DATA_ACCESS.md explains the original-archive access index and its verification limits.
-6. docs/LICENSE_SCOPE.md and docs/THIRD_PARTY_NOTICES.md explain MIT coverage and preserved third-party terms.
+6. docs/MODEL_ATTACHMENT.md links the published author-licensed model archive.
+7. docs/LICENSE_SCOPE.md and docs/THIRD_PARTY_NOTICES.md explain MIT coverage and preserved third-party terms.
 
 ## Inspect the distribution
 
@@ -19,7 +20,7 @@ Run from this repository root:
 
     python3 tools/verify_artifact.py
 
-The verifier checks file hashes, the 20,878-record split, and saved table identities. It performs no training, inference, calibration fit, bootstrap calculation, or downloads.
+The verifier checks file hashes, the 20,878-record split, original-input access records, model attachment metadata, retained HGT source bindings and saved table identities. It performs no training, inference, calibration fit, bootstrap calculation, or downloads.
 
 ## Layout
 
@@ -29,6 +30,7 @@ The verifier checks file hashes, the 20,878-record split, and saved table identi
 | data/access/ | Exact source access references for all 20,878 original archives; payloads not bundled. |
 | data/manifests/ | Eleven CSV shards with source identities, inherited labels, components and frozen splits. |
 | data/predictions/ | Saved final-test and validation predictions, including all four graph-file budgets. |
+| data/supplementary/ | Byte-identical saved diagnostic and comparator outputs, with a member/source/hash index. |
 | data/statistics/ | Saved paired-bootstrap outputs and final-test/source-size reports. |
 | configs/ | Frozen validation-fitted deployment parameters. |
 | results/ | Saved aggregate tables and diagnostics. |
@@ -41,9 +43,9 @@ One HGT and one same-seed ModernBERT form each system; results summarize three r
 
 ## Scope
 
-The compact package supports inspection of the implementation, preserved outputs and plotted numerical values. Full retraining and new inference additionally require the original package archives, derived representation caches, trained weights or reconstructed training, and the recorded environment. These large or third-party inputs are not included in this preparation draft. data/access/ORIGINAL_PACKAGE_ACCESS.csv records the original inputs and metadata/MODEL_ACCESS_PLAN.csv records the proposed model attachment scope. Local identity/path checks are complete; live access and remaining reconstruction work are listed in docs/RELEASE_READINESS.md.
+The compact package supports inspection of the implementation, preserved outputs and plotted numerical values. Full retraining and new inference additionally require the original package archives, derived representation caches, trained weights or reconstructed training, and the recorded environment. These large or third-party inputs are not included in this preparation draft. data/access/ORIGINAL_PACKAGE_ACCESS.csv records the original inputs and metadata/MODEL_ACCESS_PLAN.csv records the model components; metadata/MODEL_ATTACHMENT.json links the published archive and records its SHA256. Dated live-access checks are recorded in data/access/LIVE_ACCESS_SUMMARY.json; model attachment status is in docs/MODEL_ATTACHMENT.md. Remaining portable reconstruction and archival tasks are listed in docs/RELEASE_READINESS.md.
 
-No new experiment or scientific recalculation was performed to prepare this distribution. Resolve the remaining items in docs/RELEASE_READINESS.md before public journal release.
+No new experiment or scientific recalculation was performed to prepare this distribution. See docs/SAVED_OUTPUTS.md for the supplemental output bundle and the aggregate-only VirusTotal scope. Resolve the remaining items in docs/RELEASE_READINESS.md before journal submission.
 
 ## Software licence
 

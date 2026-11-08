@@ -1,24 +1,20 @@
 # Release-readiness status
 
-This is private preparation draft v2. Selecting a software licence does not itself make the repository public or DOI-archived. The manuscript availability statements have not yet been updated to claim either status.
+Local preparation candidate v4 includes code, frozen data identities, saved experiment outputs and plotting source data. The separate model record is published at https://doi.org/10.5281/zenodo.24038283. The code/data repository was Private in the latest supplied screenshot; this candidate has not been uploaded and has no code/data DOI yet.
 
-## Available now
+## Prepared and checked
 
-- Frozen split metadata, implementation entry points, saved aggregate results and exact data/plotting code for Figures 3-7.
-- Saved proposed-model final-test/validation predictions, four-budget OOF tables and selected statistical arrays/replicates.
-- File hashes, source-copy ledger, standard-library verifier and historical environment records.
-- Author-confirmed MIT licence for author-owned code/documentation, defined scope and preserved third-party notices.
-- Original package access index: 20,878 frozen identities; all 10,235 malicious-archive paths checked in the locally fixed upstream Git trees. PyPI entries are exact name/version metadata lookups with required archive SHA256.
-- Model access plan: six research checkpoints (about 1.80 GB), pinned ModernBERT base model and four config/tokenizer files. Weights are not bundled.
+- Frozen 20,878-record split and original-input access index, with dated 2026-11-07 checks. The checks combine PyPI metadata/HEAD, 30 full CDN SHA256 matches and fixed Git-tree/local-blob matches; they are not a full remote redownload of every input.
+- Final-test, validation, budget and source/size outputs, plus a member-indexed bundle of saved ablation, efficiency, perturbation, holdout, calibration and comparator records.
+- Exact original files and reported result identities; no training, inference, calibration, bootstrap or scientific metric recomputation during preparation.
+- Author-approved MIT for author-owned code/documentation; preserved upstream terms; separate MIT/Apache-2.0 model grants.
+- No-download distribution/hash/identity verifier and an optional model-ZIP checksum tool. Historical environment and implementation entry points are documented.
 
-## Resolve before public journal release
+## Before final journal submission
 
-1. Original package archives: verify that the documented upstream routes actually supply the exact inputs and resolve any access/redistribution restrictions. Local Git-tree and identity checks are not live-download checks; the journal's raw-data requirement is not automatically waived for malware samples or large files.
-2. Weights/caches: complete the archive/access plan in metadata/MODEL_ACCESS_PLAN.csv and metadata/EXTERNAL_MODEL_INVENTORY.json, retain applicable upstream terms, and provide or reconstruct derived representations needed by portable commands. Software MIT does not grant a model/data licence.
-3. Figure/table dependency coverage: audit the remaining ablation, perturbation, holdout and external-baseline raw inputs. The saved S10 identity audit records VirusTotal as aggregate-only; do not invent row-level predictions.
-4. Third-party references: retain current notices and complete accurate persistent identifiers where available. Source links are not new redistribution permission.
-5. Reproduction instructions: validate portable commands against the actual distributed scope. Archived scripts with absent inputs are not a tested end-to-end pipeline.
-6. Manuscript identity: synchronize author-approved Chinese revisions into the English manuscript and freeze the final result/figure index.
-7. Permanent access: after contents and scope are confirmed, create an accessible versioned archive/DOI and test access, then update manuscript availability statements to match the real files and identifiers.
+1. Upload this candidate to the dedicated GitHub repository and verify a downloaded copy. Then make the intended code/data version accessible and archive that exact version with a real code/data DOI. The existing DOI covers models only.
+2. Synchronize the author-approved Chinese revisions into the English manuscript, then confirm the final manuscript/result index and matching availability statements.
+3. Full reconstruction still requires the original archives, generation of graph/token caches and a suitable recorded environment. Archived research entry points retain their original workspace conventions. The inspection commands are tested; an end-to-end training/inference reconstruction has not been run during this task.
+4. Preserve the documented VirusTotal aggregate-only scope. Do not state that all seven comparators can be recomputed from distributed row-level outputs. If the journal requires further material, resolve that exact request from frozen source evidence.
 
-No new model fit, formal-test rerun, calibration, bootstrap, repository visibility change or DOI registration was performed to prepare this update.
+The upstream raw archives keep their original terms. Persistent source references and checksums identify them; this package assigns no blanket redistribution licence to third-party payloads. This readiness record describes actual materials and checks, not an editorial acceptance decision.
