@@ -29,3 +29,26 @@ The row key is sample_id. package_name, version, label_int, split and archive_sh
 recorded_sample_namespace and manifest_source_group preserve different existing provenance fields; neither is reassigned based on the retrieval channel. See the source-list versus retrieval counts above.
 
 The standard-library verifier checks row identity and URL construction without any network requests. It does not install, run or download original packages. Original archive bodies remain external. The six author-licensed research checkpoints are published as a separate model attachment; see docs/MODEL_ATTACHMENT.md.
+
+## Repository-root retrieval utilities (14 November 2026)
+
+The current README links both public version 1.0.0 archives: code/supporting data at https://doi.org/10.5281/zenodo.24048825 and models at https://doi.org/10.5281/zenodo.24038283. These fixed archives retain their original files. This GitHub documentation update adds retrieval/inspection utilities without changing the source access records.
+
+Run from the repository root (Python 3.10+; standard library only):
+
+```text
+python3 -B tools/fetch_original_archives.py
+python3 -B tools/fetch_original_archives.py --sample-id benign__aiochannel__1.3.0
+```
+
+These commands display plans and make no network requests. To retrieve exact original bytes and check the frozen hash/size:
+
+```text
+python3 -B tools/fetch_original_archives.py --sample-id benign__aiochannel__1.3.0 --download --output ../PSHGuard_review_work/original_archives --report ../PSHGuard_review_work/one_input.json
+```
+
+Repeat `--sample-id`, select `--split train` / `val` / `test`, or explicitly use `--all` for the full corpus. Full download transfers about 12.23 GB. Use a storage directory outside the repository. The tool accepts fixed approved HTTPS original-source references, validates redirects, records failures by sample ID, checks size and SHA256, and does not substitute later versions. It stores compressed bytes without extracting, installing or executing package contents. Some samples contain malicious code; do not install or execute them.
+
+The fields `archive_download_reference` and `source_url` serve different purposes: the first is the exact file-download reference; the second retains the source metadata/registry reference. SHA256 identifies the original bytes and does not preserve a file that is later removed upstream. Report any missing file by sample ID and expected hash so its access route can be resolved.
+
+The corpus-level split/source data, saved predictions and numerical figure inputs are distributed directly in this repository. Their dictionaries, units and reporting populations are described in docs/DATA_DICTIONARY.md, docs/PREDICTION_FILES.md and docs/PAPER_RESULT_INDEX.md. The original package access index is not claimed to contain the raw package payloads.
